@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+        <title>{{username}}'s Profile</title>
+    </head>
+    <body>
+        <div class="profile-container">
+            <nav class="nav-container">
+                <h1>{{username}}</h1>
+                <a href="/">Go Home</a>
+            </nav>
+
+            <h3>Friends</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for friend in friends %}
+                    <tr>
+                        <td>{{friend['username']}}</td>
+                        <td>
+                            <form action="/users/{{id}}" method="POST">
+                                <input type="hidden" name='friend' value="{{friend['id']}}">
+                                <input type="submit" value="Delete this friend">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

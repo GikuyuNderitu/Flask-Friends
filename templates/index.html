@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Friends</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>Friends Loaded</h1>
+
+            <main>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User_Name</th>
+                            <th>User_Friends</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{user['name']}}</td>
+                                {% if user['friends'] %}
+                                    <td>{{user['friends']}}</td>
+                                {% endif %}
+                            </tr>   
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <form action="/addUser" method="post">
+                    <h3>Add User</h3>
+
+                    <label for="">
+                        First Name
+                        <input type="text" name="first_name">
+                    </label>
+
+                    <label for="">
+                        Last Name
+                        <input type="text" name="last_name">
+                    </label>
+                    <input type="submit">
+                </form>
+
+                <form action="/friendship" method="post">
+                    <h3>Make Friendship</h3>
+
+                    <select name="user_id">
+                        {% for user in users %}
+                            <option value="{{user['id']}}">{{user['name']}}</option>
+                        {% endfor %}
+                    </select>
+                    <select name="friend_id">
+                        {% for user in users %}
+                            <option value="{{user['id']}}">{{user['name']}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <input type="submit">
+                </form>
+
+            </main>
+        </div>
+    </body>
+</html>

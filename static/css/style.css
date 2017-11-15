@@ -1,0 +1,50 @@
+* {
+    outline: 2px solid transparent;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 80vh;
+    --border-corners: 3px;
+}
+
+.flash-message {
+    width: 100%;
+    border-radius: var(--border-corners);
+    padding: 20px;
+    margin: 40px 0;    
+}
+
+.danger {
+    background: rgba(145, 25, 25, 1);
+    color: rgba(240, 150, 150, 1);
+}
+
+.success {
+    background: rgba(150, 240, 150, 1);
+     color: rgba(25, 145, 25, 1);
+}
+
+.profile-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.profile-container > table {
+    width: 50%;
+    text-align: left;
+}
+
+.profile-container > table > td {
+    border-right: 1px solid black;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
